@@ -1,2 +1,2 @@
 # iCalculator
-Simple calculator by jQuery
+Simple calculator by jQuery.
