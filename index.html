@@ -16,13 +16,37 @@
 <body class="text-center">
 	<header><h1>iCalculator</h1></header>
 	<div class="hidden" id="mainWin">
-		<div><input value="0" readonly /></div>
+		<div><input id="calcWin" value="0" readonly /></div>
 		<div>
-			<button type="button" class="btn" value="7"></button>
-			<button type="button" class="btn" value="8"></button>
-			<button type="button" class="btn" value="9"></button>
-			<button type="button" class="btn" value="+"></button>
+			<button type="button" class="btn" value="(">(</button>
+			<button type="button" class="btn" value=")">)</button>
+			<button type="button" class="btn" value="%">%</button>
+			<button type="button" class="btn" value="AC">AC</button>
 		</div>
+        <div>
+            <button type="button" class="btn" value="7">7</button>
+            <button type="button" class="btn" value="8">8</button>
+            <button type="button" class="btn" value="9">9</button>
+            <button type="button" class="btn" value="/">/</button>
+        </div>
+        <div>
+            <button type="button" class="btn" value="4">4</button>
+            <button type="button" class="btn" value="5">5</button>
+            <button type="button" class="btn" value="6">6</button>
+            <button type="button" class="btn" value="x">x</button>
+        </div>
+        <div>
+            <button type="button" class="btn" value="1">1</button>
+            <button type="button" class="btn" value="2">2</button>
+            <button type="button" class="btn" value="3">3</button>
+            <button type="button" class="btn" value="-">-</button>
+        </div>
+        <div>
+            <button type="button" class="btn" value="0">0</button>
+            <button type="button" class="btn" value=".">.</button>
+            <button type="button" class="btn" value="=">=</button>
+            <button type="button" class="btn" value="+">+</button>
+        </div>
 	</div>
 	<div id="loadWin">Loading...</div>
 	<div class="hidden" id="errWin">Error!</div>

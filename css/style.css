@@ -1,2 +1,13 @@
 ﻿body {
+    
+}
+#calcWin {
+    text-align:right;
+    width:190px;
+    margin: 5px;
+    height:50px;
+}
+.btn {
+    width:40px;
+    margin:3px;
 }
