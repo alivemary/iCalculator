@@ -27,24 +27,30 @@
     $('button').on("click", function () {
         if (numbers.indexOf(this.value) !== -1) {
             cur += this.value;
+            totalString += this.value;
             $('#calcWin').val(cur);
+            $('#totalWin').val(totalString);
         }
         if (opers.indexOf(this.value) !== -1) {
             arrO.push(this.value);
             if (arrN.length < arrO.length) arrN.push(Number(cur));
             cur = "";
-            
+            totalString += this.value;
+            $('#totalWin').val(totalString);
         }
         if (this.value === "AC") {
             cur = "";
             arrN = [];
             arrO = [];
+            totalString = "";
             $('#calcWin').val('0');
+            $('#totalWin').val(totalString);
         }
         if (this.value === '=') {
             arrN.push(Number(cur));
             cur = calculate(arrN, arrO);
-            $('#calcWin').val(calculate(arrN, arrO));
+            $('#calcWin').val(cur);
+            $('#totalWin').val(totalString+'='+cur);
             arrN = [calculate(arrN, arrO)];
             arrO = [];
         }

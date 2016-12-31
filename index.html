@@ -14,15 +14,16 @@
 	<script type="text/javascript" src="js/calculator.js"></script>
 </head>
 <body class="text-center">
-	<header><h1>iCalculator</h1></header>
-	<div class="hidden" id="mainWin">
-		<div><input id="calcWin" value="0" readonly /></div>
-		<div>
-			<button type="button" class="btn" value="(">(</button>
-			<button type="button" class="btn" value=")">)</button>
-			<button type="button" class="btn" value="%">%</button>
-			<button type="button" class="btn" value="AC">AC</button>
-		</div>
+    <header><h1>iCalculator</h1></header>
+    <div class="hidden" id="mainWin">
+        <div><input id="calcWin" value="0" readonly /></div>
+        <div><input id="totalWin" value="" readonly /></div>
+        <div>
+            <button type="button" class="btn" value="√">√</button>
+            <button type="button" class="btn" value="%">%</button>
+            <button type="button" class="btn" value="CE">CE</button>
+            <button type="button" class="btn" value="AC">AC</button>
+        </div>
         <div>
             <button type="button" class="btn" value="7">7</button>
             <button type="button" class="btn" value="8">8</button>
@@ -47,9 +48,10 @@
             <button type="button" class="btn" value="=">=</button>
             <button type="button" class="btn" value="+">+</button>
         </div>
-	</div>
-	<div id="loadWin">Loading...</div>
-	<div class="hidden" id="errWin">Error!</div>
-	<footer>By Maryna Martynenko</footer>
+        
+    </div>
+    <div id="loadWin">Loading...</div>
+    <div class="hidden" id="errWin">Error!</div>
+    <footer>By Maryna Martynenko</footer>
 </body>
 </html>
