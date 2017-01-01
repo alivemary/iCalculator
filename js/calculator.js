@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     var totalString = "";
-    var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
     var opers = ['+', '-', '*', '/'];
     var arrN = [];
     var arrO = [];
@@ -20,39 +20,77 @@
                 case '/': result /= arr1[i + 1]; break;
             }
         }
-        return result;
+        if (Number.isInteger(result)) {
+            return result;
+        }
+        else {
+            return Math.round(result * 100) / 100;
+        }
         
     }
-
-    $('button').on("click", function () {
-        if (numbers.indexOf(this.value) !== -1) {
-            cur += this.value;
-            totalString += this.value;
-            $('#calcWin').val(cur);
-            $('#totalWin').val(totalString);
+    function showTotal(str) {
+        if (str.length < 26) $('#totalWin').val(str);
+        else {
+            $('#totalWin').val('Digit limit met');
+            cur = "";
+            arrN = [];
+            arrO = [];
+            totalString = "";
+            $('#calcWin').val('0');
         }
+    }
+    
+    $('button').on("click", function () {
+        //if number pressed
+        if (numbers.indexOf(this.value) !== -1) {
+            if (arrN.length === 1 && arrO.length === 0) {
+                cur = this.value;
+                arrN = [];
+                totalString = cur;
+            }
+            else {
+                cur += this.value;
+                totalString += this.value;
+            }
+            $('#calcWin').val(cur);
+            showTotal(totalString);
+        }
+        //if operation pressed
         if (opers.indexOf(this.value) !== -1) {
-            arrO.push(this.value);
+            if (opers.indexOf(totalString.charAt(totalString.length-1)) === -1) {
+                arrO.push(this.value);
+                totalString += this.value;
+            }
             if (arrN.length < arrO.length) arrN.push(Number(cur));
             cur = "";
-            totalString += this.value;
-            $('#totalWin').val(totalString);
+            showTotal(totalString);
         }
+        //if All Clear pressed
         if (this.value === "AC") {
             cur = "";
             arrN = [];
             arrO = [];
             totalString = "";
             $('#calcWin').val('0');
-            $('#totalWin').val(totalString);
+            showTotal(totalString);
         }
+        //if = pressed
         if (this.value === '=') {
             arrN.push(Number(cur));
             cur = calculate(arrN, arrO);
             $('#calcWin').val(cur);
-            $('#totalWin').val(totalString+'='+cur);
-            arrN = [calculate(arrN, arrO)];
+            arrN = [cur];
             arrO = [];
+            showTotal(totalString + '=' + cur);
+            totalString = cur.toString();
+            cur = "";
+        }
+        //if Clear element pressed
+        if (this.value === "CE") {
+            totalString = totalString.substring(0, totalString.length - cur.length);
+            cur = "";
+            $('#calcWin').val('0');
+            showTotal(totalString);
         }
         
         console.log(totalString);
