@@ -7,10 +7,6 @@
     var cur = '';
     
     function calculate(arr1, arr2) {
-        //var nums = str.match(/[0-9]+/g);
-        //var operators = str.match(/[\+\-\/\*]+/g);
-        //console.log(nums);
-        //console.log(operators);
         var result = arr1[0];
         for (var i = 0; i < arr2.length; i++) {
             switch (arr2[i]) {
@@ -49,8 +45,14 @@
                 totalString = cur;
             }
             else {
-                cur += this.value;
-                totalString += this.value;
+                if (this.value === '.' && /\./.test(cur)) {
+
+                }
+                else {
+                    cur += this.value;
+                    totalString += this.value;
+                }
+                
             }
             $('#calcWin').val(cur);
             showTotal(totalString);
